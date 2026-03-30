@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Junyoung Bang | Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --gold: #c9a84c;
+      --gold-dim: rgba(201, 168, 76, 0.15);
+      --gold-border: rgba(201, 168, 76, 0.3);
+      --bg: #0f0f1a;
+      --bg-card: #1a1a2e;
+      --bg-card2: #16162a;
+      --text: #e8e8f0;
+      --text-dim: #888;
+      --text-muted: #555;
+      --accent: #4a9eff;
+      --accent-dim: rgba(74, 158, 255, 0.12);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(15, 15, 26, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #1e1e30;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+
+    .nav-logo {
+      font-size: 1.1rem;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-family: 'Georgia', serif;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 40px 60px;
+      background: radial-gradient(ellipse at 50% 40%, rgba(201, 168, 76, 0.06) 0%, transparent 70%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: var(--gold-dim);
+      border: 1px solid var(--gold-border);
+      border-radius: 20px;
+      padding: 5px 18px;
+      margin-bottom: 32px;
+    }
+
+    .hero-name {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: normal;
+      letter-spacing: 0.06em;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .hero-name span {
+      color: var(--gold);
+    }
+
+    .hero-title {
+      font-size: 1.25rem;
+      color: var(--text-dim);
+      letter-spacing: 0.08em;
+      margin-bottom: 28px;
+      font-style: italic;
+    }
+
+    .hero-summary {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: #b0b0c8;
+      max-width: 640px;
+      margin: 0 auto 40px;
+    }
+
+    .hero-contacts {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: all 0.25s;
+      font-family: 'Georgia', serif;
+    }
+
+    .contact-btn.primary {
+      background: var(--gold);
+      color: #0f0f1a;
+      font-weight: bold;
+    }
+
+    .contact-btn.primary:hover {
+      background: #dfc060;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(201, 168, 76, 0.3);
+    }
+
+    .contact-btn.secondary {
+      border: 1px solid var(--gold-border);
+      color: var(--gold);
+      background: var(--gold-dim);
+    }
+
+    .contact-btn.secondary:hover {
+      background: rgba(201, 168, 76, 0.25);
+      transform: translateY(-2px);
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      animation: bounce 2s infinite;
+    }
+
+    .scroll-hint::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(var(--gold-border), transparent);
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* SECTIONS */
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 100px 40px;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: normal;
+      color: #fff;
+      margin-bottom: 48px;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 48px;
+      height: 2px;
+      background: var(--gold);
+      margin-top: 16px;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid #1e1e30;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* SKILLS */
+    #skills {
+      background: linear-gradient(180deg, transparent, rgba(26, 26, 46, 0.4), transparent);
+    }
+
+    .skills-groups {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .skill-group {
+      background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card2) 100%);
+      border: 1px solid #2a2a45;
+      border-radius: 14px;
+      padding: 28px 26px;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    }
+
+    .skill-group:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+      border-color: var(--gold-border);
+    }
+
+    .skill-group-title {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .skill-group-title .icon {
+      font-size: 1.1rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-tag {
+      font-size: 0.78rem;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid #2a2a45;
+      color: #c0c0d8;
+      font-family: 'Georgia', serif;
+      transition: all 0.2s;
+    }
+
+    .skill-tag:hover {
+      background: var(--gold-dim);
+      border-color: var(--gold-border);
+      color: var(--gold);
+    }
+
+    /* EXPERIENCE */
+    .timeline {
+      position: relative;
+      padding-left: 32px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(#2a2a45, transparent);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 56px;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -36px;
+      top: 8px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 12px rgba(201, 168, 76, 0.5);
+    }
+
+    .timeline-meta {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .timeline-company-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .company-logo {
+      height: 36px;
+      width: auto;
+      max-width: 110px;
+      object-fit: contain;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 4px 8px;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+
+    .collab-logos {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .collab-logos .company-logo {
+      height: 32px;
+    }
+
+    .collab-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-right: 4px;
+    }
+
+    .timeline-company {
+      font-size: 1.2rem;
+      color: #fff;
+      letter-spacing: 0.03em;
+    }
+
+    .timeline-period {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      background: #1e1e30;
+      padding: 3px 12px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .timeline-role {
+      font-size: 0.9rem;
+      color: var(--gold);
+      margin-bottom: 4px;
+      font-style: italic;
+    }
+
+    .timeline-location {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .timeline-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .timeline-bullets li {
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: #a8a8c0;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .timeline-bullets li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: 0.7rem;
+      top: 3px;
+    }
+
+    /* EDUCATION */
+    .edu-card {
+      background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card2) 100%);
+      border: 1px solid #2a2a45;
+      border-radius: 14px;
+      padding: 36px 32px;
+      display: flex;
+      align-items: flex-start;
+      gap: 28px;
+      transition: transform 0.25s, border-color 0.25s;
+    }
+
+    .edu-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold-border);
+    }
+
+    .edu-logo-wrap {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 80px;
+      height: 80px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 12px;
+      padding: 8px;
+    }
+
+    .edu-logo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .edu-degree {
+      font-size: 1.15rem;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .edu-school {
+      font-size: 1rem;
+      color: var(--gold);
+      margin-bottom: 6px;
+      font-style: italic;
+    }
+
+    .edu-meta {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .edu-gpa {
+      color: #6ec87a;
+      font-weight: bold;
+    }
+
+    /* CERTS */
+    .cert-chips {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .cert-chip {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card2) 100%);
+      border: 1px solid var(--gold-border);
+      border-radius: 12px;
+      padding: 14px 22px;
+      font-size: 0.88rem;
+      color: var(--gold);
+      transition: all 0.25s;
+    }
+
+    .cert-chip:hover {
+      background: var(--gold-dim);
+      transform: translateY(-2px);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      border-top: 1px solid #1e1e30;
+    }
+
+    footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    /* FADE IN ANIMATION */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* LOGO STRIP */
+    .logostrip {
+      border-top: 1px solid #1e1e30;
+      border-bottom: 1px solid #1e1e30;
+      background: rgba(26, 26, 46, 0.5);
+      padding: 28px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+    }
+
+    .logostrip-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      white-space: nowrap;
+      margin-right: 40px;
+      flex-shrink: 0;
+    }
+
+    .logostrip-logos {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .logostrip-logo {
+      height: 40px;
+      width: auto;
+      max-width: 130px;
+      object-fit: contain;
+      background: rgba(255, 255, 255, 0.92);
+      padding: 6px 14px;
+      border-radius: 8px;
+      opacity: 0.85;
+      transition: opacity 0.2s, transform 0.2s;
+      filter: grayscale(20%);
+    }
+
+    .logostrip-logo:hover {
+      opacity: 1;
+      transform: translateY(-2px);
+      filter: grayscale(0%);
+    }
+
+    /* STORY CARDS SECTION */
+    .story-section-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-top: -32px;
+      margin-bottom: 48px;
+      letter-spacing: 0.05em;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .story-card {
+      background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card2) 100%);
+      border: 1px solid #2a2a45;
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .story-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 52px rgba(0,0,0,0.45), 0 0 0 1px var(--gold-border);
+      border-color: var(--gold-border);
+    }
+
+    .story-card-thumb {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+      border-bottom: 1px solid #2a2a45;
+    }
+
+    .story-card-placeholder {
+      width: 100%;
+      height: 180px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-bottom: 1px solid #2a2a45;
+      font-size: 2.6rem;
+    }
+
+    .story-card-placeholder.c3 { background: linear-gradient(135deg, #1a1a35 0%, #0f0f22 100%); }
+    .story-card-placeholder.c5 { background: linear-gradient(135deg, #1a2a1a 0%, #0f1a0f 100%); }
+    .story-card-placeholder.c6 { background: linear-gradient(135deg, #1a1f2a 0%, #0f1218 100%); }
+
+    .story-card-body {
+      padding: 22px 22px 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .story-card-num {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .story-card-title {
+      font-size: 0.95rem;
+      color: #e8e8f0;
+      line-height: 1.45;
+      font-family: 'Georgia', serif;
+    }
+
+    .story-card-cta {
+      margin-top: auto;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .story-card-cta::after {
+      content: '→';
+      color: var(--gold);
+      transition: transform 0.2s;
+    }
+
+    .story-card:hover .story-card-cta::after {
+      transform: translateX(4px);
+    }
+
+    /* MODAL */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 5, 14, 0.82);
+      backdrop-filter: blur(6px);
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-box {
+      background: var(--bg-card);
+      border: 1px solid #2a2a45;
+      border-radius: 18px;
+      width: 100%;
+      max-width: 760px;
+      max-height: 88vh;
+      overflow-y: auto;
+      transform: translateY(20px) scale(0.97);
+      transition: transform 0.25s;
+      scrollbar-width: thin;
+      scrollbar-color: #2a2a45 transparent;
+    }
+
+    .modal-overlay.active .modal-box {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 28px 30px 0;
+      position: sticky;
+      top: 0;
+      background: var(--bg-card);
+      z-index: 1;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #1e1e30;
+    }
+
+    .modal-header-text {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .modal-company-tag {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .modal-title {
+      font-size: 1.2rem;
+      color: #fff;
+      font-weight: normal;
+      font-family: 'Georgia', serif;
+      line-height: 1.35;
+    }
+
+    .modal-close {
+      background: #1e1e30;
+      border: 1px solid #2a2a45;
+      color: var(--text-dim);
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .modal-close:hover {
+      background: var(--gold-dim);
+      color: var(--gold);
+      border-color: var(--gold-border);
+    }
+
+    .modal-images {
+      display: flex;
+      gap: 12px;
+      padding: 20px 30px 0;
+      flex-wrap: wrap;
+    }
+
+    .modal-images img {
+      flex: 1;
+      min-width: 0;
+      max-height: 220px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 1px solid #2a2a45;
+    }
+
+    .modal-images.single img {
+      max-height: 260px;
+      width: 100%;
+    }
+
+    .star-table {
+      padding: 20px 30px 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .star-row {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 0;
+      border-bottom: 1px solid #1e1e30;
+    }
+
+    .star-row:last-child {
+      border-bottom: none;
+    }
+
+    .star-label {
+      padding: 18px 0 18px 0;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-family: 'Georgia', serif;
+      display: flex;
+      align-items: flex-start;
+      padding-top: 19px;
+    }
+
+    .star-content {
+      padding: 18px 0 18px 20px;
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: #a8a8c0;
+      border-left: 1px solid #1e1e30;
+    }
+
+    .star-row.takeaway .star-label {
+      color: #6ec87a;
+    }
+
+    .star-row.takeaway .star-content {
+      color: #c0d8c4;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .story-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .logostrip { padding: 24px 20px; flex-direction: column; gap: 16px; }
+      .logostrip-label { margin-right: 0; margin-bottom: 4px; }
+      .logostrip-logos { gap: 24px; }
+      nav { padding: 0 20px; }
+      nav .nav-links { gap: 18px; }
+      section { padding: 70px 24px; }
+      .edu-card { flex-direction: column; gap: 16px; }
+      .timeline { padding-left: 22px; }
+      .timeline-dot { left: -26px; }
+      .story-grid { grid-template-columns: 1fr; }
+      .star-table { padding: 16px 20px 24px; }
+      .star-row { grid-template-columns: 90px 1fr; }
+      .modal-images { padding: 16px 20px 0; }
+      .modal-header { padding: 20px 20px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">JB</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#ls-stories">Stories</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#education">Education</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="about">
+    <div id="hero">
+      <div class="hero-grid"></div>
+      <div class="hero-content">
+        <div class="hero-badge">Process Engineer &amp; MSE Graduate Researcher</div>
+        <h1 class="hero-name">Junyoung <span>Bang</span></h1>
+        <p class="hero-title">Materials Science &amp; Engineering</p>
+        <p class="hero-summary">
+          Process Engineer with 4 years of high-volume manufacturing experience and M.S. candidate
+          in Materials Science &amp; Engineering at UCF (GPA 3.92/4.0). Currently conducting
+          electromigration reliability research in collaboration with Hewlett Packard Enterprise.
+          Six Sigma Green Belt &amp; Black Belt certified.
+        </p>
+        <div class="hero-contacts">
+          <a href="mailto:junyoung.bang@ucf.edu" class="contact-btn primary">✉ Email</a>
+          <a href="https://www.linkedin.com/in/junyoung-bang-mse" target="_blank" class="contact-btn secondary">in LinkedIn</a>
+          <a href="tel:407-927-8015" class="contact-btn secondary">☎ 407-927-8015</a>
+        </div>
+      </div>
+      <div class="scroll-hint">SCROLL</div>
+    </div>
+  </section>
+
+  <!-- LOGO STRIP -->
+  <div class="logostrip">
+    <span class="logostrip-label">Affiliated with</span>
+    <div class="logostrip-logos">
+      <img src="ucf.png" class="logostrip-logo" alt="University of Central Florida">
+      <img src="Hewlett-Packard-Enterprise-Company-HPE-Logo.png" class="logostrip-logo" alt="Hewlett Packard Enterprise">
+      <img src="LScable.jpg" class="logostrip-logo" alt="LS Cable & System">
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="section-label">Expertise</p>
+    <h2 class="section-title">Technical Skills</h2>
+
+    <div class="skills-groups">
+      <div class="skill-group fade-in">
+        <div class="skill-group-title"><span class="icon">⚙️</span> Process Engineering</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Process Optimization</span>
+          <span class="skill-tag">SPC/CPK</span>
+          <span class="skill-tag">DOE</span>
+          <span class="skill-tag">FMEA</span>
+          <span class="skill-tag">Lean Manufacturing</span>
+          <span class="skill-tag">Yield Improvement</span>
+          <span class="skill-tag">Root Cause Analysis</span>
+          <span class="skill-tag">5-Why / Fishbone</span>
+          <span class="skill-tag">QMS</span>
+          <span class="skill-tag">Corrective Action</span>
+        </div>
+      </div>
+
+      <div class="skill-group fade-in">
+        <div class="skill-group-title"><span class="icon">💻</span> Software &amp; Data</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">MATLAB</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">SAP ERP</span>
+          <span class="skill-tag">Power BI</span>
+          <span class="skill-tag">Microsoft Excel</span>
+        </div>
+      </div>
+
+      <div class="skill-group fade-in">
+        <div class="skill-group-title"><span class="icon">🔬</span> Thin Film &amp; Fabrication</div>
+        <div class="skill-tags">
+          <span class="skill-tag">PVD 6-gun Sputtering</span>
+          <span class="skill-tag">PECVD</span>
+          <span class="skill-tag">ALD</span>
+          <span class="skill-tag">Thin Film Deposition</span>
+          <span class="skill-tag">Profilometry</span>
+        </div>
+      </div>
+
+      <div class="skill-group fade-in">
+        <div class="skill-group-title"><span class="icon">🧪</span> Characterization</div>
+        <div class="skill-tags">
+          <span class="skill-tag">SEM</span>
+          <span class="skill-tag">DMA / TMA</span>
+          <span class="skill-tag">EBSD</span>
+          <span class="skill-tag">3D Surface Profiling</span>
+          <span class="skill-tag">Failure Analysis</span>
+          <span class="skill-tag">Microstructure Analysis</span>
+        </div>
+      </div>
+
+      <div class="skill-group fade-in" style="grid-column: 1 / -1; max-width: 420px;">
+        <div class="skill-group-title"><span class="icon">🏅</span> Certifications</div>
+        <div class="cert-chips">
+          <div class="cert-chip">⬡ Six Sigma Green Belt</div>
+          <div class="cert-chip">⬡ Six Sigma Black Belt</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- INDUSTRY EXPERIENCE -->
+  <section id="experience">
+    <p class="section-label">Career</p>
+    <h2 class="section-title">Industry Experience</h2>
+
+    <div class="timeline">
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot"></div>
+        <div class="timeline-meta">
+          <div class="timeline-company-wrap">
+            <img src="LScable.jpg" class="company-logo" alt="LS Cable & System">
+            <div class="timeline-company">LS Cable &amp; System</div>
+          </div>
+          <div class="timeline-period">Jan 2022 – Jul 2025</div>
+        </div>
+        <div class="timeline-role">Production Engineer (Full Time, On-Site)</div>
+        <div class="timeline-location">📍 Korea</div>
+        <ul class="timeline-bullets">
+          <li>Built and maintained SPC/CPK monitoring systems on high-capacity OFC production lines to continuously improve process capability across casting and rolling operations.</li>
+          <li>Developed a MATLAB-based real-time feed rate control model that maintained alloy composition deviation within ±0.5% during alloy injection.</li>
+          <li>Identified recurring process instability root causes across two production facilities within 6 months using DOE and fishbone analysis, reducing defect rates and improving overall yield.</li>
+          <li>Redesigned the preventive maintenance architecture for dust collection systems, eliminating equipment-related downtime and directly improving OEE.</li>
+          <li>Established a quality data reporting framework integrated with ERP SAP, reducing defect response time from 24 hours to real-time.</li>
+          <li>Identified root causes of scale calibration errors through SAP data reconciliation and 5-Why analysis, reducing material loss by 0.2% and improving process yield.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- LS CABLE STORY CARDS -->
+  <section id="ls-stories">
+    <p class="section-label">Deep Dive</p>
+    <h2 class="section-title">LS Cable &amp; System</h2>
+    <p class="story-section-subtitle">Process Engineer &nbsp;·&nbsp; Jan 2022 – Jul 2025</p>
+
+    <div class="story-grid">
+
+      <!-- Card 1 -->
+      <div class="story-card fade-in" onclick="openModal(0)">
+        <img src="데이터기반공정화1.png" class="story-card-thumb" alt="Data-Driven Process Standardization">
+        <div class="story-card-body">
+          <div class="story-card-num">Story 01</div>
+          <div class="story-card-title">Data-Driven Process Standardization</div>
+          <div class="story-card-cta">Read full story</div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="story-card fade-in" onclick="openModal(1)">
+        <img src="긍정적인 태도로 팀 분위기를 바꾼 경험.jpg" class="story-card-thumb" alt="Team Morale">
+        <div class="story-card-body">
+          <div class="story-card-num">Story 02</div>
+          <div class="story-card-title">Team Morale &amp; Collaborative Problem Solving</div>
+          <div class="story-card-cta">Read full story</div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="story-card fade-in" onclick="openModal(2)">
+        <div class="story-card-placeholder c3">🌙</div>
+        <div class="story-card-body">
+          <div class="story-card-num">Story 03</div>
+          <div class="story-card-title">Process Responsibility — Off-Hours Incident Response</div>
+          <div class="story-card-cta">Read full story</div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="story-card fade-in" onclick="openModal(3)">
+        <img src="공정지능화 및 다중 검증1.png" class="story-card-thumb" alt="Multi-Layer Quality Verification">
+        <div class="story-card-body">
+          <div class="story-card-num">Story 04</div>
+          <div class="story-card-title">Multi-Layer Quality Verification System</div>
+          <div class="story-card-cta">Read full story</div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="story-card fade-in" onclick="openModal(4)">
+        <div class="story-card-placeholder c5">📦</div>
+        <div class="story-card-body">
+          <div class="story-card-num">Story 05</div>
+          <div class="story-card-title">Customer-Oriented Packaging Solution</div>
+          <div class="story-card-cta">Read full story</div>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="story-card fade-in" onclick="openModal(5)">
+        <div class="story-card-placeholder c6">📊</div>
+        <div class="story-card-body">
+          <div class="story-card-num">Story 06</div>
+          <div class="story-card-title">SAP ERP Real-Time Quality Integration</div>
+          <div class="story-card-cta">Read full story</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- STAR MODAL -->
+  <div class="modal-overlay" id="starModal" onclick="handleOverlayClick(event)">
+    <div class="modal-box" id="modalBox">
+      <div class="modal-header">
+        <div class="modal-header-text">
+          <div class="modal-company-tag">LS Cable &amp; System · STAR Story</div>
+          <div class="modal-title" id="modalTitle"></div>
+        </div>
+        <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-images" id="modalImages"></div>
+      <div class="star-table" id="modalStar"></div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- RESEARCH -->
+  <section id="research">
+    <p class="section-label">Academia</p>
+    <h2 class="section-title">Research Experience</h2>
+
+    <div class="timeline">
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot"></div>
+        <div class="timeline-meta">
+          <div class="timeline-company-wrap">
+            <img src="ucf.png" class="company-logo" alt="University of Central Florida">
+            <div class="timeline-company">University of Central Florida</div>
+          </div>
+          <div class="timeline-period">Aug 2025 – Present</div>
+        </div>
+        <div class="timeline-role">Graduate Research Assistant</div>
+        <div class="timeline-location">📍 Orlando, FL · Advisor: Prof. Tengfei Jiang · Advanced Materials Processing and Analysis Center</div>
+        <div class="collab-logos">
+          <span class="collab-label">In collaboration with</span>
+          <img src="Hewlett-Packard-Enterprise-Company-HPE-Logo.png" class="company-logo" alt="Hewlett Packard Enterprise">
+        </div>
+        <ul class="timeline-bullets">
+          <li>Designed and executed electromigration reliability test protocols for PCB substrate interconnects in collaboration with Hewlett Packard Enterprise; evaluated process-dependent microstructural variables including grain orientation and twin boundary density via EBSD.</li>
+          <li>Standardized DMA/TMA characterization procedures for PCB substrate qualification, reducing test variability by 80% and establishing repeatable process benchmarks for Tg, CTE, and storage modulus.</li>
+          <li>Operated 6-gun PVD sputtering and PECVD thin film deposition systems; optimized process parameters (power, pressure, gas flow) and verified thin film uniformity via Dektak profilometry.</li>
+          <li>Characterized process-induced microstructural changes through SEM imaging and cross-sectional analysis of interconnect structures, correlating manufacturing conditions with device reliability outcomes.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <p class="section-label">Academic Background</p>
+    <h2 class="section-title">Education</h2>
+
+    <div class="edu-card fade-in">
+      <div class="edu-logo-wrap">
+        <img src="ucf.png" alt="UCF">
+      </div>
+      <div>
+        <div class="edu-degree">M.S. Materials Science &amp; Engineering</div>
+        <div class="edu-school">University of Central Florida (UCF)</div>
+        <div class="edu-meta">
+          <span>📍 Orlando, FL</span>
+          <span>📅 Aug 2025 – May 2027 (Expected)</span>
+          <span class="edu-gpa">GPA: 3.92 / 4.0</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Junyoung Bang &mdash; <a href="mailto:junyoung.bang@ucf.edu">junyoung.bang@ucf.edu</a> &mdash; Orlando, FL</p>
+    <p style="margin-top:8px;">© 2026 Junyoung Bang. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // STAR Stories data
+    const stories = [
+      {
+        title: "Data-Driven Process Standardization",
+        images: ["데이터기반공정화1.png", "데이터기반공정화2.png"],
+        star: [
+          { label: "Situation", text: "Materials were added based on operators' manual timing and experience, leading to frequent alloy content deviations from standard specifications." },
+          { label: "Task",      text: "Move away from subjective methods and establish an objective, data-driven feeding standard to stabilize alloy content within strict tolerances." },
+          { label: "Action",    text: "Collected and analyzed two weeks of data on feeding timing, quantity, and final content. Quantified how different timings affected alloy composition and derived the optimal feeding point to revise the Standard Operating Procedure (SOP)." },
+          { label: "Result",    text: "Zero occurrences of alloy content non-conformity since implementation. Established a system ensuring consistent quality regardless of operator experience level." },
+          { label: "Takeaway",  text: "A process engineer's core competency lies in transforming on-site know-how into objective, data-driven systems that ensure process reliability at all times.", takeaway: true }
+        ]
+      },
+      {
+        title: "Team Morale & Collaborative Problem Solving",
+        images: ["긍정적인 태도로 팀 분위기를 바꾼 경험.jpg"],
+        star: [
+          { label: "Situation", text: "During a project marked by repeated trial and error, the team became exhausted and a negative atmosphere began to set in." },
+          { label: "Task",      text: "Boost the team's declining morale and motivate everyone to successfully complete the project." },
+          { label: "Action",    text: "Approached on-site operators with a proactive attitude to propose collaboration. During meetings, consciously shared small wins and expressed gratitude for teammates' contributions to lighten the atmosphere." },
+          { label: "Result",    text: "The team's mood shifted significantly, leading to active idea exchanges both in meetings and on the shop floor, which ultimately resolved the underlying issues." },
+          { label: "Takeaway",  text: "Positive energy is a powerful tool that strengthens team cohesion and serves as a driving force to overcome even the most difficult challenges.", takeaway: true }
+        ]
+      },
+      {
+        title: "Process Responsibility — Off-Hours Incident Response",
+        images: [],
+        star: [
+          { label: "Situation", text: "An unexpected equipment alarm caused a production halt during a weekend night shift while managing the SCR process." },
+          { label: "Task",      text: "Immediate root cause analysis and recovery were required to minimize production losses." },
+          { label: "Action",    text: "Despite being off-duty, monitored data remotely and communicated with on-site operators to identify a cooling system error and provide corrective instructions." },
+          { label: "Result",    text: "Reduced expected downtime from 4 hours to 1 hour through early response, preventing a high scrap rate." },
+          { label: "Takeaway",  text: "An engineer's responsibility goes beyond office hours — it's about owning product quality and process continuity until the end.", takeaway: true }
+        ]
+      },
+      {
+        title: "Multi-Layer Quality Verification System",
+        images: ["공정지능화 및 다중 검증1.png", "공정지능화 및 다중 검증2.png"],
+        star: [
+          { label: "Situation", text: "Equipment errors caused intermittent deviations in product dimensions during manufacturing, compromising quality consistency." },
+          { label: "Task",      text: "Establish a multi-layer monitoring system to verify dimensions in real time and enable immediate response to deviations." },
+          { label: "Action",    text: "Collaborated with the equipment team to install a non-intrusive encoder. Designed cross-verification logic between equipment and encoder data, implemented an automated alarm for threshold breaches, and updated the SOP." },
+          { label: "Result",    text: "The dual-verification system eliminated the outflow of non-conforming products and maximized production stability by ensuring process data reliability." },
+          { label: "Takeaway",  text: "Multi-layer verification and systemization (SOP) are the cornerstones of achieving smart factory excellence and zero-defect manufacturing.", takeaway: true }
+        ]
+      },
+      {
+        title: "Customer-Oriented Packaging Solution",
+        images: [],
+        star: [
+          { label: "Situation", text: "After product delivery, material entanglement issues occurred during the customer's process, causing unexpected production line shutdowns at the customer site." },
+          { label: "Task",      text: "Analyze the root cause of the feeding mechanism and derive an unwinding solution optimized for the customer's operational environment." },
+          { label: "Action",    text: "Analyzed material behavior and identified instability in the internal loading structure. Designed and implemented an Internal Guide Pillar to maintain consistent tension and prevent entanglement during high-speed unwinding." },
+          { label: "Result",    text: "Achieved a 0% defect rate for material entanglement, significantly reducing customer downtime and earning high process reliability ratings." },
+          { label: "Takeaway",  text: "A true quality engineer's role extends beyond internal production to optimizing the process interface where the product is actually used by the customer.", takeaway: true }
+        ]
+      },
+      {
+        title: "SAP ERP Real-Time Quality Integration",
+        images: [],
+        star: [
+          { label: "Situation", text: "Tracking operational and quality data from off-site equipment in real time was difficult, resulting in a 24-hour lag in defect response time." },
+          { label: "Task",      text: "Integrate field equipment data with the SAP ERP system to build a unified dashboard for real-time monitoring and instant alerts." },
+          { label: "Action",    text: "Led the integration project in collaboration with the IT team. Defined critical KPIs using domain expertise and provided technical guidance to align field equipment data protocols with ERP standards." },
+          { label: "Result",    text: "Reduced defect response time from 24 hours to real time, completing a proactive, data-driven quality management framework." },
+          { label: "Takeaway",  text: "The synergy between domain expertise and IT technology is the key driver of manufacturing competitiveness — data visibility is the foundation of quality innovation.", takeaway: true }
+        ]
+      }
+    ];
+
+    function openModal(index) {
+      const story = stories[index];
+      document.getElementById('modalTitle').textContent = story.title;
+
+      // Images
+      const imgContainer = document.getElementById('modalImages');
+      if (story.images.length > 0) {
+        imgContainer.style.display = 'flex';
+        imgContainer.className = 'modal-images' + (story.images.length === 1 ? ' single' : '');
+        imgContainer.innerHTML = story.images.map(src =>
+          `<img src="${src}" alt="${story.title}">`
+        ).join('');
+      } else {
+        imgContainer.style.display = 'none';
+        imgContainer.innerHTML = '';
+      }
+
+      // STAR rows
+      document.getElementById('modalStar').innerHTML = story.star.map(row =>
+        `<div class="star-row${row.takeaway ? ' takeaway' : ''}">
+          <div class="star-label">${row.label}</div>
+          <div class="star-content">${row.text}</div>
+        </div>`
+      ).join('');
+
+      document.getElementById('starModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('starModal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function handleOverlayClick(e) {
+      if (e.target === document.getElementById('starModal')) closeModal();
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
+
+  <script>
+    // Scroll fade-in
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Nav active link highlight
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(sec => {
+        if (window.scrollY >= sec.offsetTop - 100) {
+          current = sec.id;
+        }
+      });
+      navLinks.forEach(a => {
+        a.style.color = a.getAttribute('href') === '#' + current ? 'var(--gold)' : '';
+      });
+    });
+  </script>
+
+</body>
+</html>

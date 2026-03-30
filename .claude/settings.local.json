@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(MYSQL=\"/c/Program Files/MySQL/MySQL Server 9.6/bin/mysql.exe\")",
+      "Bash(\"$MYSQL\" -u root -pekfkawnl1! -e \"USE olist_ecommerce; SHOW TABLES;\")",
+      "Bash(\"$MYSQL\" -u root -pekfkawnl1! -e \"USE olist_ecommerce; DESCRIBE olist_orders_dataset; DESCRIBE olist_order_items_dataset; DESCRIBE olist_order_payments_dataset;\")",
+      "Bash(pip install:*)",
+      "Bash(python -m pip install mysql-connector-python plotly kaleido)",
+      "Bash(PY=\"/c/Users/wnsdu/AppData/Local/Python/pythoncore-3.11-64/python.exe\")",
+      "Bash(\"$PY\" --version)",
+      "Bash(\"$PY\" -c \"import mysql.connector; print\\(''mysql.connector OK''\\)\")",
+      "Bash(\"$PY\" -c \"import pandas; print\\(''pandas OK''\\)\")",
+      "Bash(\"$PY\" -c \"import plotly; print\\(''plotly OK''\\)\")",
+      "Bash(PY=\"/c/Users/wnsdu/Downloads/New folder/python.exe\")",
+      "Bash(PY=\"/c/Users/wnsdu/Downloads/New folder/python.exe\" \"$PY\" -m pip install mysql-connector-python)",
+      "Bash(PY=\"/c/Users/wnsdu/Downloads/New folder/python.exe\" \"$PY\" -m pip install kaleido)",
+      "Bash(\"$PY\" analyze_monthly_sales.py)",
+      "Bash(PYTHONIOENCODING=utf-8 \"$PY\" analyze_monthly_sales.py)",
+      "Bash(PYTHONIOENCODING=utf-8 \"$PY\" create_template.py)",
+      "Bash(PYTHONIOENCODING=utf-8 \"$PY\" - << 'EOF':*)",
+      "Bash(PYTHONIOENCODING=utf-8 \"$PY\" -m py_compile \"/c/Users/wnsdu/claude-test/linkedin_scraper.py\")",
+      "Bash(PYTHONIOENCODING=utf-8 \"$PY\" -c \"import os; print\\(os.environ.get\\(''ANTHROPIC_API_KEY'', ''NOT SET''\\)[:20]\\)\")",
+      "WebFetch(domain:mattwatson30.github.io)",
+      "Bash(python3:*)",
+      "Bash(grep -v '^$')",
+      "Bash(unzip -q -c \"Research experience.docx\" word/document.xml)"
+    ]
+  }
+}

@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Junyoung Bang | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --blue: #0000ff;
+      --blue-dim: rgba(0,0,255,0.07);
+      --blue-border: rgba(0,0,255,0.18);
+      --text: #0d0d0d;
+      --text-sec: #1a1a1a;
+      --text-light: #333333;
+      --bg: #f8f9fa;
+      --white: #ffffff;
+      --border: #dee2e6;
+      --border-light: #e9ecef;
+      --shadow: rgba(0,0,0,0.06);
+      --shadow-hover: rgba(0,0,255,0.10);
+      --green: #198754;
+      --nav-h: 84px;
+      --sidebar-w: 200px;
+    }
+
+    html { scroll-behavior: smooth; font-size: 120%; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: var(--nav-h);
+      z-index: 300;
+      background: var(--white);
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      gap: 24px;
+    }
+
+    .nav-logo {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .nav-center {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      flex: 1;
+      justify-content: center;
+    }
+
+    .nav-center a {
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+      transition: color 0.2s;
+    }
+
+    .nav-center a:hover,
+    .nav-center a.active { color: var(--blue); }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      transition: all 0.2s;
+      white-space: nowrap;
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: transparent;
+    }
+
+    .nav-btn:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+    }
+
+    .nav-btn.primary {
+      background: var(--blue);
+      color: var(--white);
+      border-color: var(--blue);
+    }
+
+    .nav-btn.primary:hover {
+      background: #0000cc;
+      border-color: #0000cc;
+      color: var(--white);
+    }
+
+    /* ── PAGE LAYOUT ── */
+    .page-layout {
+      padding-top: var(--nav-h);
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: calc(100vh - var(--nav-h));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 72px 72px 96px;
+      background: var(--white);
+    }
+
+    .hero-photo {
+      width: 216px;
+      height: 216px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--white);
+      box-shadow: 0 4px 28px rgba(0,0,0,0.14);
+      margin-bottom: 26px;
+    }
+
+    .hero-name {
+      font-size: 2.4rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text-sec);
+      letter-spacing: 0.04em;
+      margin-bottom: 22px;
+    }
+
+    .hero-bio {
+      max-width: 640px;
+      font-size: 1.1rem;
+      color: var(--text-sec);
+      line-height: 1.8;
+      margin-bottom: 34px;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 10px 22px;
+      border-radius: 6px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: var(--white);
+      border: 1px solid var(--blue);
+    }
+
+    .btn-primary:hover {
+      background: #0000cc;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,255,0.25);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+      transform: translateY(-2px);
+    }
+
+    /* ── SHARED SECTION ── */
+    .section-wrap {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 96px 72px;
+    }
+
+    .section-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 1.85rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 48px;
+    }
+
+    hr.divider {
+      border: none;
+      border-top: 1px solid var(--border-light);
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    /* ── SKILLS ── */
+    .skills-groups {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 18px;
+    }
+
+    .skill-group {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 26px 22px;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .skill-group:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px var(--shadow-hover);
+      border-color: transparent;
+    }
+
+    .skill-group-title {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .skill-tag {
+      font-size: 0.84rem;
+      padding: 5px 13px;
+      border-radius: 20px;
+      background: var(--bg);
+      border: 1px solid var(--border-light);
+      color: var(--text-sec);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      transition: all 0.2s;
+    }
+
+    .skill-tag:hover {
+      background: var(--blue-dim);
+      border-color: var(--blue-border);
+      color: var(--blue);
+    }
+
+    .cert-chips {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .cert-chip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg);
+      border: 1px solid var(--blue-border);
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-size: 0.83rem;
+      font-weight: 500;
+      color: var(--blue);
+      transition: all 0.2s;
+    }
+
+    .cert-chip:hover {
+      background: var(--blue-dim);
+      transform: translateY(-2px);
+    }
+
+    /* ── TIMELINE ── */
+    .timeline {
+      position: relative;
+      padding-left: 28px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 8px; bottom: 0;
+      width: 1px;
+      background: linear-gradient(var(--border), transparent);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 52px;
+    }
+
+    .timeline-item:last-child { margin-bottom: 0; }
+
+    .timeline-dot {
+      position: absolute;
+      left: -32px; top: 10px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--blue);
+      border: 2px solid var(--white);
+      box-shadow: 0 0 0 2px var(--blue-border);
+    }
+
+    .timeline-meta {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 5px;
+    }
+
+    .timeline-company-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .timeline-logo {
+      height: 36px;
+      width: auto;
+      max-width: 115px;
+      object-fit: contain;
+      background: var(--bg);
+      padding: 4px 8px;
+      border-radius: 6px;
+      border: 1px solid var(--border-light);
+      flex-shrink: 0;
+    }
+
+    .timeline-company {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .timeline-period {
+      font-size: 0.76rem;
+      color: var(--text-sec);
+      background: var(--bg);
+      padding: 3px 12px;
+      border-radius: 20px;
+      white-space: nowrap;
+      border: 1px solid var(--border-light);
+    }
+
+    .timeline-role {
+      font-size: 0.86rem;
+      color: var(--blue);
+      margin-bottom: 3px;
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .timeline-location {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      margin-bottom: 16px;
+    }
+
+    .collab-logos {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .collab-label {
+      font-size: 0.68rem;
+      color: var(--text-light);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .collab-logo {
+      height: 32px;
+      width: auto;
+      max-width: 115px;
+      object-fit: contain;
+      background: var(--bg);
+      padding: 3px 8px;
+      border-radius: 5px;
+      border: 1px solid var(--border-light);
+    }
+
+    .timeline-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .timeline-bullets li {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--text-sec);
+      padding-left: 16px;
+      position: relative;
+      font-weight: 400;
+    }
+
+    .timeline-bullets li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--blue);
+      font-size: 0.68rem;
+      top: 4px;
+    }
+
+    /* ── STORIES INLINE (inside Experience section) ── */
+    .stories-header {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin-top: 52px;
+      margin-bottom: 6px;
+    }
+
+    .stories-sub-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+
+    .stories-hint {
+      font-size: 0.88rem;
+      color: var(--text-sec);
+      margin-bottom: 24px;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .story-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .story-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px var(--shadow-hover);
+      border-color: transparent;
+    }
+
+    .story-card-thumb {
+      width: 100%;
+      height: 192px;
+      object-fit: cover;
+      display: block;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .story-card-placeholder {
+      width: 100%;
+      height: 192px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.6rem;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .story-card-placeholder.c3 { background: linear-gradient(135deg, #e8f0fe, #d2e3fc); }
+    .story-card-placeholder.c5 { background: linear-gradient(135deg, #e6f4ea, #ceead6); }
+    .story-card-placeholder.c6 { background: linear-gradient(135deg, #f0f4ff, #dde5ff); }
+
+    .story-card-body {
+      padding: 18px 20px 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .story-card-num {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+
+    .story-card-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.45;
+    }
+
+    .story-card-cta {
+      margin-top: auto;
+      padding-top: 10px;
+      font-size: 0.76rem;
+      font-weight: 500;
+      color: var(--blue);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: gap 0.2s;
+    }
+
+    .story-card:hover .story-card-cta { gap: 10px; }
+
+    /* ── EDUCATION ── */
+    .edu-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 34px 30px;
+      display: flex;
+      align-items: flex-start;
+      gap: 26px;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .edu-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px var(--shadow-hover);
+      border-color: transparent;
+    }
+
+    .edu-logo-wrap {
+      flex-shrink: 0;
+      width: 86px; height: 86px;
+      background: var(--bg);
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+    }
+
+    .edu-logo-wrap img { width: 100%; height: 100%; object-fit: contain; }
+
+    .edu-degree {
+      font-size: 1.08rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 5px;
+    }
+
+    .edu-school {
+      font-size: 0.92rem;
+      color: var(--blue);
+      margin-bottom: 8px;
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .edu-meta {
+      font-size: 0.8rem;
+      color: var(--text-sec);
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .edu-gpa { color: var(--green); font-weight: 600; }
+
+    /* ── STAR MODAL ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.46);
+      backdrop-filter: blur(5px);
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-box {
+      background: var(--white);
+      border: 1px solid var(--border-light);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 860px;
+      max-height: 88vh;
+      overflow-y: auto;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.18);
+      transform: translateY(18px) scale(0.97);
+      transition: transform 0.25s;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+
+    .modal-overlay.active .modal-box { transform: translateY(0) scale(1); }
+
+    .modal-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 24px 26px 16px;
+      position: sticky;
+      top: 0;
+      background: var(--white);
+      z-index: 1;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .modal-company-tag {
+      font-size: 0.66rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 4px;
+    }
+
+    .modal-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.35;
+    }
+
+    .modal-close {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text-sec);
+      width: 30px; height: 30px;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+
+    .modal-close:hover {
+      background: var(--blue-dim);
+      color: var(--blue);
+      border-color: var(--blue-border);
+    }
+
+    .modal-images {
+      display: flex;
+      gap: 10px;
+      padding: 18px 26px 0;
+      flex-wrap: wrap;
+    }
+
+    .modal-images img {
+      flex: 1;
+      min-width: 0;
+      max-height: 340px;
+      object-fit: contain;
+      background: var(--bg);
+      border-radius: 8px;
+      border: 1px solid var(--border-light);
+    }
+
+    .modal-images.single img { max-height: 420px; width: 100%; }
+
+    .star-table {
+      padding: 14px 26px 26px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .star-row {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .star-row:last-child { border-bottom: none; }
+
+    .star-label {
+      padding: 16px 0;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+
+    .star-content {
+      padding: 16px 0 16px 18px;
+      font-size: 0.95rem;
+      line-height: 1.85;
+      color: var(--text-sec);
+      border-left: 1px solid var(--border-light);
+      font-weight: 400;
+    }
+
+    .star-row.takeaway .star-label  { color: var(--green); }
+    .star-row.takeaway .star-content { color: #1a5c35; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      border-top: 1px solid var(--border-light);
+      color: var(--text-sec);
+      font-size: 0.82rem;
+      font-weight: 400;
+    }
+
+    footer a { color: var(--blue); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── FADE IN ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .story-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 900px) {
+      .nav-center { gap: 20px; }
+      .nav-center a { font-size: 0.8rem; }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 12px 20px;
+        gap: 12px;
+        position: static;
+      }
+
+      .nav-center { order: 3; width: 100%; justify-content: flex-start; gap: 16px; padding-bottom: 4px; }
+      .nav-actions { order: 2; }
+
+      .page-layout { padding-top: 0; }
+      #hero { min-height: auto; padding: 60px 24px; }
+      .hero-name { font-size: 1.9rem; }
+      .section-wrap { padding: 60px 24px; }
+      .edu-card { flex-direction: column; gap: 16px; }
+      .timeline { padding-left: 20px; }
+      .timeline-dot { left: -28px; }
+    }
+
+    @media (max-width: 600px) {
+      .story-grid { grid-template-columns: 1fr; }
+      .star-row { grid-template-columns: 78px 1fr; }
+      .modal-header { padding: 16px 16px 12px; }
+      .modal-images { padding: 12px 16px 0; }
+      .star-table { padding: 10px 16px 20px; }
+      .star-content { padding-left: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a href="#hero" class="nav-logo">Junyoung Bang</a>
+
+    <div class="nav-center">
+      <a href="#hero" class="nav-section-link" data-section="hero">About</a>
+      <a href="#skills" class="nav-section-link" data-section="skills">Skills</a>
+      <a href="#experience" class="nav-section-link" data-section="experience">Experience</a>
+      <a href="#research" class="nav-section-link" data-section="research">Research</a>
+      <a href="#education" class="nav-section-link" data-section="education">Education</a>
+    </div>
+
+    <div class="nav-actions">
+      <a href="Junyoung_Bang_Resume_수정2.docx" download class="nav-btn primary">Resume</a>
+      <a href="https://www.linkedin.com/in/junyoung-bang-mse" target="_blank" rel="noopener" class="nav-btn">LinkedIn</a>
+      <a href="mailto:junyoung.bang@ucf.edu" class="nav-btn">Email</a>
+    </div>
+  </nav>
+
+  <!-- ── PAGE LAYOUT ── -->
+  <div class="page-layout">
+    <main>
+
+      <!-- HERO -->
+      <section id="hero">
+        <img src="junyoung.jpg" alt="Junyoung Bang" class="hero-photo">
+        <h1 class="hero-name">Junyoung Bang</h1>
+        <p class="hero-sub">M.S. Materials Science &amp; Engineering &nbsp;·&nbsp; Process Engineer &nbsp;·&nbsp; UCF</p>
+        <p class="hero-bio">
+          Process engineer with 4 years of high-volume manufacturing experience and an M.S. candidate at UCF (GPA&nbsp;3.92/4.0).
+          Conducting electromigration reliability research in collaboration with Hewlett Packard Enterprise,
+          with hands-on expertise in PVD sputtering, SEM, EBSD, and statistical process control.
+          Six Sigma Green &amp; Black Belt certified.
+        </p>
+        <div class="hero-btns">
+          <a href="mailto:junyoung.bang@ucf.edu" class="btn btn-primary">✉ &nbsp;Email Me</a>
+          <a href="https://www.linkedin.com/in/junyoung-bang-mse" target="_blank" rel="noopener" class="btn btn-outline">in &nbsp;LinkedIn</a>
+          <a href="Junyoung_Bang_Resume_수정2.docx" download class="btn btn-outline">📄 &nbsp;Resume</a>
+          <a href="tel:407-927-8015" class="btn btn-outline">☎ &nbsp;407-927-8015</a>
+        </div>
+      </section>
+
+      <hr class="divider">
+
+      <!-- SKILLS -->
+      <div class="section-wrap" id="skills">
+        <p class="section-label">Expertise</p>
+        <h2 class="section-title">Technical Skills</h2>
+
+        <div class="skills-groups">
+          <div class="skill-group fade-in">
+            <div class="skill-group-title"><span>⚙️</span> Process Engineering</div>
+            <div class="skill-tags">
+              <span class="skill-tag">Process Optimization</span>
+              <span class="skill-tag">SPC / CPK</span>
+              <span class="skill-tag">DOE</span>
+              <span class="skill-tag">FMEA</span>
+              <span class="skill-tag">Lean Manufacturing</span>
+              <span class="skill-tag">Yield Improvement</span>
+              <span class="skill-tag">Root Cause Analysis</span>
+              <span class="skill-tag">5-Why / Fishbone</span>
+              <span class="skill-tag">QMS</span>
+              <span class="skill-tag">Corrective Action</span>
+            </div>
+          </div>
+
+          <div class="skill-group fade-in">
+            <div class="skill-group-title"><span>💻</span> Software &amp; Data</div>
+            <div class="skill-tags">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">MATLAB</span>
+              <span class="skill-tag">SQL</span>
+              <span class="skill-tag">SAP ERP</span>
+              <span class="skill-tag">Power BI</span>
+              <span class="skill-tag">Microsoft Excel</span>
+            </div>
+          </div>
+
+          <div class="skill-group fade-in">
+            <div class="skill-group-title"><span>🔬</span> Thin Film &amp; Fabrication</div>
+            <div class="skill-tags">
+              <span class="skill-tag">PVD 6-gun Sputtering</span>
+              <span class="skill-tag">PECVD</span>
+              <span class="skill-tag">ALD</span>
+              <span class="skill-tag">Thin Film Deposition</span>
+              <span class="skill-tag">Profilometry</span>
+            </div>
+          </div>
+
+          <div class="skill-group fade-in">
+            <div class="skill-group-title"><span>🧪</span> Characterization</div>
+            <div class="skill-tags">
+              <span class="skill-tag">SEM</span>
+              <span class="skill-tag">DMA / TMA</span>
+              <span class="skill-tag">EBSD</span>
+              <span class="skill-tag">3D Surface Profiling</span>
+              <span class="skill-tag">Failure Analysis</span>
+              <span class="skill-tag">Microstructure Analysis</span>
+            </div>
+          </div>
+
+          <div class="skill-group fade-in" style="grid-column: 1 / -1; max-width: 440px;">
+            <div class="skill-group-title"><span>🏅</span> Certifications</div>
+            <div class="cert-chips">
+              <div class="cert-chip">⬡ Six Sigma Green Belt</div>
+              <div class="cert-chip">⬡ Six Sigma Black Belt</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <!-- EXPERIENCE + STORIES (merged) -->
+      <div class="section-wrap" id="experience">
+        <p class="section-label">Career</p>
+        <h2 class="section-title">Industry Experience</h2>
+
+        <div class="timeline">
+          <div class="timeline-item fade-in">
+            <div class="timeline-dot"></div>
+            <div class="timeline-meta">
+              <div class="timeline-company-wrap">
+                <img src="LScable.jpg" class="timeline-logo" alt="LS Cable & System">
+                <div class="timeline-company">LS Cable &amp; System</div>
+              </div>
+              <div class="timeline-period">Jan 2022 – Jul 2025</div>
+            </div>
+            <div class="timeline-role">Production Engineer · Full Time, On-Site</div>
+            <div class="timeline-location">📍 Korea</div>
+            <ul class="timeline-bullets">
+              <li>Built and maintained SPC/CPK monitoring systems on high-capacity OFC production lines to continuously improve process capability across casting and rolling operations.</li>
+              <li>Developed a MATLAB-based real-time feed rate control model that maintained alloy composition deviation within ±0.5% during alloy injection.</li>
+              <li>Identified recurring process instability root causes across two production facilities within 6 months using DOE and fishbone analysis, reducing defect rates and improving overall yield.</li>
+              <li>Redesigned the preventive maintenance architecture for dust collection systems, eliminating equipment-related downtime and directly improving OEE.</li>
+              <li>Established a quality data reporting framework integrated with ERP SAP, reducing defect response time from 24 hours to real-time.</li>
+              <li>Identified root causes of scale calibration errors through SAP data reconciliation and 5-Why analysis, reducing material loss by 0.2% and improving process yield.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- STAR Stories -->
+        <div class="stories-header">
+          <p class="stories-sub-label">STAR Stories</p>
+        </div>
+        <p class="stories-hint">Click any card to read the full Situation · Task · Action · Result story</p>
+
+        <div class="story-grid">
+          <div class="story-card fade-in" onclick="openModal(0)">
+            <img src="데이터기반공정화1.png" class="story-card-thumb" alt="">
+            <div class="story-card-body">
+              <div class="story-card-num">Story 01</div>
+              <div class="story-card-title">Data-Driven Process Standardization</div>
+              <div class="story-card-cta">Read full story →</div>
+            </div>
+          </div>
+
+          <div class="story-card fade-in" onclick="openModal(1)">
+            <img src="긍정적인 태도로 팀 분위기를 바꾼 경험.jpg" class="story-card-thumb" alt="">
+            <div class="story-card-body">
+              <div class="story-card-num">Story 02</div>
+              <div class="story-card-title">Team Morale &amp; Collaborative Problem Solving</div>
+              <div class="story-card-cta">Read full story →</div>
+            </div>
+          </div>
+
+          <div class="story-card fade-in" onclick="openModal(2)">
+            <img src="Process responsibility - off hours incident response.png" class="story-card-thumb" alt="">
+            <div class="story-card-body">
+              <div class="story-card-num">Story 03</div>
+              <div class="story-card-title">Process Responsibility — Off-Hours Incident Response</div>
+              <div class="story-card-cta">Read full story →</div>
+            </div>
+          </div>
+
+          <div class="story-card fade-in" onclick="openModal(3)">
+            <img src="공정지능화 및 다중 검증1.png" class="story-card-thumb" alt="">
+            <div class="story-card-body">
+              <div class="story-card-num">Story 04</div>
+              <div class="story-card-title">Multi-Layer Quality Verification System</div>
+              <div class="story-card-cta">Read full story →</div>
+            </div>
+          </div>
+
+          <div class="story-card fade-in" onclick="openModal(4)">
+            <img src="Customer-Oriented Packaging Solution.jpg" class="story-card-thumb" alt="">
+            <div class="story-card-body">
+              <div class="story-card-num">Story 05</div>
+              <div class="story-card-title">Customer-Oriented Packaging Solution</div>
+              <div class="story-card-cta">Read full story →</div>
+            </div>
+          </div>
+
+          <div class="story-card fade-in" onclick="openModal(5)">
+            <img src="SAP ERP Real-Time Quality integration.png" class="story-card-thumb" alt="">
+            <div class="story-card-body">
+              <div class="story-card-num">Story 06</div>
+              <div class="story-card-title">SAP ERP Real-Time Quality Integration</div>
+              <div class="story-card-cta">Read full story →</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <!-- RESEARCH -->
+      <div class="section-wrap" id="research">
+        <p class="section-label">Academia</p>
+        <h2 class="section-title">Research Experience</h2>
+
+        <div class="timeline">
+          <div class="timeline-item fade-in">
+            <div class="timeline-dot"></div>
+            <div class="timeline-meta">
+              <div class="timeline-company-wrap">
+                <img src="ucf.png" class="timeline-logo" alt="UCF">
+                <div class="timeline-company">University of Central Florida</div>
+              </div>
+              <div class="timeline-period">Aug 2025 – Present</div>
+            </div>
+            <div class="timeline-role">Graduate Research Assistant</div>
+            <div class="timeline-location">📍 Orlando, FL &nbsp;·&nbsp; Advisor: Prof. Tengfei Jiang &nbsp;·&nbsp; Advanced Materials Processing and Analysis Center</div>
+            <div class="collab-logos">
+              <span class="collab-label">In collaboration with</span>
+              <img src="Hewlett-Packard-Enterprise-Company-HPE-Logo.png" class="collab-logo" alt="HPE">
+            </div>
+            <ul class="timeline-bullets">
+              <li>Designed and executed electromigration reliability test protocols for PCB substrate interconnects in collaboration with Hewlett Packard Enterprise; evaluated process-dependent microstructural variables including grain orientation and twin boundary density via EBSD.</li>
+              <li>Standardized DMA/TMA characterization procedures for PCB substrate qualification, reducing test variability by 80% and establishing repeatable process benchmarks for Tg, CTE, and storage modulus.</li>
+              <li>Operated 6-gun PVD sputtering and PECVD thin film deposition systems; optimized process parameters (power, pressure, gas flow) and verified thin film uniformity via Dektak profilometry.</li>
+              <li>Characterized process-induced microstructural changes through SEM imaging and cross-sectional analysis of interconnect structures, correlating manufacturing conditions with device reliability outcomes.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- RESEARCH STAR Stories -->
+        <div class="stories-header">
+          <p class="stories-sub-label">STAR Stories</p>
+        </div>
+        <p class="stories-hint">Click any card to read the full Situation · Task · Action · Result story</p>
+
+        <div class="story-grid">
+          <div class="story-card fade-in" onclick="openModal(6)">
+            <img src="차세대 기판 신뢰성 분석.png" class="story-card-thumb" alt="">
+            <div class="story-card-body">
+              <div class="story-card-num">Story 01</div>
+              <div class="story-card-title">Next-Gen Substrate Reliability Analysis</div>
+              <div class="story-card-cta">Read full story →</div>
+            </div>
+          </div>
+
+          <div class="story-card fade-in" onclick="openModal(7)">
+            <img src="측정 메커니즘 개선 및 데이터 신뢰성 확보2.png" class="story-card-thumb" alt="">
+            <div class="story-card-body">
+              <div class="story-card-num">Story 02</div>
+              <div class="story-card-title">Measurement Standardization &amp; Data Reliability</div>
+              <div class="story-card-cta">Read full story →</div>
+            </div>
+          </div>
+
+          <div class="story-card fade-in" onclick="openModal(8)">
+            <div class="story-card-placeholder c3">📈</div>
+            <div class="story-card-body">
+              <div class="story-card-num">Story 03</div>
+              <div class="story-card-title">Statistical Lifespan Prediction &amp; Failure Analysis</div>
+              <div class="story-card-cta">Read full story →</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <!-- EDUCATION -->
+      <div class="section-wrap" id="education">
+        <p class="section-label">Academic Background</p>
+        <h2 class="section-title">Education</h2>
+
+        <div class="edu-card fade-in">
+          <div class="edu-logo-wrap">
+            <img src="ucf.png" alt="UCF">
+          </div>
+          <div>
+            <div class="edu-degree">M.S. Materials Science &amp; Engineering</div>
+            <div class="edu-school">University of Central Florida (UCF)</div>
+            <div class="edu-meta">
+              <span>📍 Orlando, FL</span>
+              <span>📅 Aug 2025 – May 2027 (Expected)</span>
+              <span class="edu-gpa">GPA: 3.92 / 4.0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+    </main>
+  </div><!-- end page-layout -->
+
+  <!-- ── STAR MODAL ── -->
+  <div class="modal-overlay" id="starModal" onclick="handleOverlayClick(event)">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div>
+          <div class="modal-company-tag" id="modalCompanyTag"></div>
+          <div class="modal-title" id="modalTitle"></div>
+        </div>
+        <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-images" id="modalImages"></div>
+      <div class="star-table" id="modalStar"></div>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <p>© 2026 Junyoung Bang &nbsp;·&nbsp; <a href="mailto:junyoung.bang@ucf.edu">junyoung.bang@ucf.edu</a> &nbsp;·&nbsp; Orlando, FL</p>
+  </footer>
+
+  <script>
+    // ── STAR DATA ──
+    const stories = [
+      {
+        title: "Data-Driven Process Standardization",
+        images: ["데이터기반공정화1.png", "데이터기반공정화2.png"],
+        star: [
+          { label: "Situation", text: "Materials were added based on operators' manual timing and experience, leading to frequent alloy content deviations from standard specifications." },
+          { label: "Task",      text: "Move away from subjective methods and establish an objective, data-driven feeding standard to stabilize alloy content within strict tolerances." },
+          { label: "Action",    text: "Collected and analyzed two weeks of data on feeding timing, quantity, and final content. Quantified how different timings affected alloy composition and derived the optimal feeding point to revise the Standard Operating Procedure (SOP)." },
+          { label: "Result",    text: "Zero occurrences of alloy content non-conformity since implementation. Established a system ensuring consistent quality regardless of operator experience level." },
+          { label: "Takeaway",  text: "A process engineer's core competency lies in transforming on-site know-how into objective, data-driven systems that ensure process reliability at all times.", takeaway: true }
+        ]
+      },
+      {
+        title: "Team Morale & Collaborative Problem Solving",
+        images: ["긍정적인 태도로 팀 분위기를 바꾼 경험.jpg"],
+        star: [
+          { label: "Situation", text: "During a project marked by repeated trial and error, the team became exhausted and a negative atmosphere began to set in." },
+          { label: "Task",      text: "Boost the team's declining morale and motivate everyone to successfully complete the project." },
+          { label: "Action",    text: "Approached on-site operators with a proactive attitude to propose collaboration. During meetings, consciously shared small wins and expressed gratitude for teammates' contributions to lighten the atmosphere." },
+          { label: "Result",    text: "The team's mood shifted significantly, leading to active idea exchanges both in meetings and on the shop floor, which ultimately resolved the underlying issues." },
+          { label: "Takeaway",  text: "Positive energy is a powerful tool that strengthens team cohesion and serves as a driving force to overcome even the most difficult challenges.", takeaway: true }
+        ]
+      },
+      {
+        title: "Process Responsibility — Off-Hours Incident Response",
+        images: ["Process responsibility - off hours incident response.png"],
+        star: [
+          { label: "Situation", text: "An unexpected equipment alarm caused a production halt during a weekend night shift while managing the SCR process." },
+          { label: "Task",      text: "Immediate root cause analysis and recovery were required to minimize production losses." },
+          { label: "Action",    text: "Despite being off-duty, monitored data remotely and communicated with on-site operators to identify a cooling system error and provide corrective instructions." },
+          { label: "Result",    text: "Reduced expected downtime from 4 hours to 1 hour through early response, preventing a high scrap rate." },
+          { label: "Takeaway",  text: "An engineer's responsibility goes beyond office hours — it's about owning product quality and process continuity until the end.", takeaway: true }
+        ]
+      },
+      {
+        title: "Multi-Layer Quality Verification System",
+        images: ["공정지능화 및 다중 검증1.png", "공정지능화 및 다중 검증2.png"],
+        star: [
+          { label: "Situation", text: "Equipment errors caused intermittent deviations in product dimensions during manufacturing, compromising quality consistency." },
+          { label: "Task",      text: "Establish a multi-layer monitoring system to verify dimensions in real time and enable immediate response to deviations." },
+          { label: "Action",    text: "Collaborated with the equipment team to install a non-intrusive encoder. Designed cross-verification logic between equipment and encoder data, implemented an automated alarm for threshold breaches, and updated the SOP." },
+          { label: "Result",    text: "The dual-verification system eliminated the outflow of non-conforming products and maximized production stability by ensuring process data reliability." },
+          { label: "Takeaway",  text: "Multi-layer verification and systemization (SOP) are the cornerstones of achieving smart factory excellence and zero-defect manufacturing.", takeaway: true }
+        ]
+      },
+      {
+        title: "Customer-Oriented Packaging Solution",
+        images: ["Customer-Oriented Packaging Solution.jpg"],
+        star: [
+          { label: "Situation", text: "After product delivery, material entanglement issues occurred during the customer's process, causing unexpected production line shutdowns at the customer site." },
+          { label: "Task",      text: "Analyze the root cause of the feeding mechanism and derive an unwinding solution optimized for the customer's operational environment." },
+          { label: "Action",    text: "Analyzed material behavior and identified instability in the internal loading structure. Designed and implemented an Internal Guide Pillar to maintain consistent tension and prevent entanglement during high-speed unwinding." },
+          { label: "Result",    text: "Achieved a 0% defect rate for material entanglement, significantly reducing customer downtime and earning high process reliability ratings." },
+          { label: "Takeaway",  text: "A true quality engineer's role extends beyond internal production to optimizing the process interface where the product is actually used by the customer.", takeaway: true }
+        ]
+      },
+      {
+        title: "SAP ERP Real-Time Quality Integration",
+        images: ["SAP ERP Real-Time Quality integration.png"],
+        star: [
+          { label: "Situation", text: "Tracking operational and quality data from off-site equipment in real time was difficult, resulting in a 24-hour lag in defect response time." },
+          { label: "Task",      text: "Integrate field equipment data with the SAP ERP system to build a unified dashboard for real-time monitoring and instant alerts." },
+          { label: "Action",    text: "Led the integration project in collaboration with the IT team. Defined critical KPIs using domain expertise and provided technical guidance to align field equipment data protocols with ERP standards." },
+          { label: "Result",    text: "Reduced defect response time from 24 hours to real time, completing a proactive, data-driven quality management framework." },
+          { label: "Takeaway",  text: "The synergy between domain expertise and IT technology is the key driver of manufacturing competitiveness — data visibility is the foundation of quality innovation.", takeaway: true }
+        ]
+      },
+
+      // ── RESEARCH STORIES ──
+      {
+        company: "UCF · Graduate Research",
+        title: "Next-Gen Substrate Reliability Analysis",
+        images: ["차세대 기판 신뢰성 분석.png", "차세대 기판 신뢰성 분석2.png"],
+        star: [
+          { label: "Situation", text: "As power density in high-performance computing systems increases, Electromigration (EM) in PCB substrate interconnects has become a critical reliability concern." },
+          { label: "Task",      text: "In collaboration with HPE, I needed to predict the lifespan of interconnects under various process variables and quantitatively analyze the impact of microstructural factors on reliability." },
+          { label: "Action",    text: "Designed and executed EM reliability test protocols. Using EBSD, I extracted data on grain orientation and twin boundary density to analyze the correlation between these variables and atomic diffusion." },
+          { label: "Result",    text: "Provided optimized microstructural control strategies to ensure interconnect reliability. My findings were adopted as key design guidelines for future high-specification server substrates." },
+          { label: "Takeaway",  text: "I developed analytical problem-solving skills by linking advanced characterization data with theoretical mechanisms to derive practical engineering solutions.", takeaway: true }
+        ]
+      },
+      {
+        company: "UCF · Graduate Research",
+        title: "Measurement Standardization & Data Reliability",
+        images: ["측정 메커니즘 개선 및 데이터 신뢰성 확보2.png"],
+        star: [
+          { label: "Situation", text: "While evaluating the thermo-mechanical properties of next-gen PCB substrates, significant data variability occurred even among identical samples, causing confusion in quality assessment." },
+          { label: "Task",      text: "I needed to identify the root cause of data inconsistency and standardize the measurement process (SOP) to ensure repeatable results regardless of the operator." },
+          { label: "Action",    text: "Identified that micro-slippage of the specimen during measurement was the primary cause of data distortion. I optimized the clamping torque and loading conditions and established an SOP that includes a pre-test checklist to detect potential slip." },
+          { label: "Result",    text: "Reduced test variability by 80% by eliminating mechanical errors and secured highly repeatable process benchmarks for critical properties including Tg, CTE, and storage modulus." },
+          { label: "Takeaway",  text: "Data reliability in precision analysis begins with standardizing the interface between the specimen and equipment — ensuring absolute control over every physical variable.", takeaway: true }
+        ]
+      },
+      {
+        company: "UCF · Graduate Research",
+        title: "Statistical Lifespan Prediction & Failure Analysis",
+        images: [],
+        star: [
+          { label: "Situation", text: "During the reliability assessment of next-gen high-density interconnects, unexpected early failures occurred, requiring urgent root cause analysis and lifespan prediction." },
+          { label: "Task",      text: "I needed to analyze microstructural defects using SEM/EBSD and quantitatively calculate the Mean Time To Failure (MTTF) through statistical modeling." },
+          { label: "Action",    text: "Performed root cause failure analysis via SEM/EBSD to identify atomic diffusion paths at grain boundaries. I applied Weibull and log-normal statistics to the failure data to extract the MTTF and build a reliability prediction model." },
+          { label: "Result",    text: "Provided reliability guidelines based on statistical evidence, preventing potential failure risks during the design phase through accurate lifespan prediction." },
+          { label: "Takeaway",  text: "Combining advanced characterization with statistical methodologies is the most powerful tool for quantifying and predicting unseen quality in manufacturing.", takeaway: true }
+        ]
+      }
+    ];
+
+    // ── MODAL ──
+    function openModal(index) {
+      const s = stories[index];
+      document.getElementById('modalTitle').textContent = s.title;
+      document.getElementById('modalCompanyTag').textContent = (s.company || 'LS Cable & System') + ' · STAR Story';
+
+      const imgEl = document.getElementById('modalImages');
+      if (s.images.length > 0) {
+        imgEl.style.display = 'flex';
+        imgEl.className = 'modal-images' + (s.images.length === 1 ? ' single' : '');
+        imgEl.innerHTML = s.images.map(src => `<img src="${src}" alt="${s.title}">`).join('');
+      } else {
+        imgEl.style.display = 'none';
+        imgEl.innerHTML = '';
+      }
+
+      document.getElementById('modalStar').innerHTML = s.star.map(row =>
+        `<div class="star-row${row.takeaway ? ' takeaway' : ''}">
+          <div class="star-label">${row.label}</div>
+          <div class="star-content">${row.text}</div>
+        </div>`
+      ).join('');
+
+      document.getElementById('starModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('starModal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function handleOverlayClick(e) {
+      if (e.target === document.getElementById('starModal')) closeModal();
+    }
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    // ── NAV ACTIVE STATE ──
+    const navLinks   = document.querySelectorAll('.nav-section-link');
+    const sectionIds = ['hero', 'skills', 'experience', 'research', 'education'];
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(a => a.classList.toggle('active', a.dataset.section === entry.target.id));
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+
+    sectionIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) sectionObserver.observe(el);
+    });
+
+    // ── FADE IN ──
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+  </script>
+
+</body>
+</html>
