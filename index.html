@@ -928,11 +928,13 @@
         gap: 4px;
         align-items: center;
       }
+      .hero-name-sep { display: none; }
       .hero-name-title { font-size: 1.2rem; font-weight: 500; }
-      .hero-sub { font-size: 0.88rem; }
+      .hero-sub { font-size: 14px; white-space: normal; }
       .hero-bio { font-size: 0.95rem; }
-      .hero-btns { gap: 8px; }
-      .btn { padding: 9px 18px; font-size: 0.8rem; }
+      .hero-btns { flex-direction: column; gap: 8px; width: 100%; max-width: 320px; }
+      .btn { width: 100%; justify-content: center; padding: 12px 18px; font-size: 0.82rem; }
+      .timeline-bullets li { font-size: 14px; line-height: 1.6; }
 
       /* Sections */
       .section-wrap { padding: 56px 20px; }
@@ -1023,7 +1025,7 @@
       <!-- HERO -->
       <section id="hero">
         <img src="junyoung.jpg" alt="Junyoung Bang" class="hero-photo">
-        <h1 class="hero-name">Junyoung Bang &nbsp;·&nbsp; <span class="hero-name-title">Process Engineer</span></h1>
+        <h1 class="hero-name">Junyoung Bang<span class="hero-name-sep">&nbsp;·&nbsp;</span><span class="hero-name-title">Process Engineer</span></h1>
         <p class="hero-sub">M.S. Materials Science &amp; Engineering &nbsp;·&nbsp; Process Engineer &nbsp;·&nbsp; UCF</p>
         <p class="hero-bio">
           Process engineer with 4 years of high-volume manufacturing experience and an M.S. candidate at UCF.
