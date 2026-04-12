@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Study · Junyoung Bang</title>
+  <style>
+    :root {
+      --bg: #f7f7f5;
+      --white: #ffffff;
+      --text: #1a1a1a;
+      --text-sec: #5a5a5a;
+      --blue: #1a56db;
+      --blue-dim: #eff4ff;
+      --blue-border: #c7d7fd;
+      --green: #2d6a4f;
+      --border: #e0e0e0;
+      --border-light: #ebebeb;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-light);
+      padding: 0 32px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .back-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-sec);
+      text-decoration: none;
+      padding: 6px 12px;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      background: var(--white);
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+      cursor: pointer;
+    }
+
+    .back-btn:hover {
+      color: var(--blue);
+      border-color: var(--blue-border);
+      background: var(--blue-dim);
+    }
+
+    .topbar-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-sec);
+    }
+
+    /* ── MAIN CONTENT ── */
+    .page-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 32px 80px;
+    }
+
+    .company-tag {
+      font-size: 0.66rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 10px;
+    }
+
+    .story-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.25;
+      margin-bottom: 40px;
+    }
+
+    /* ── IMAGES ── */
+    .story-images {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .story-images img {
+      flex: 1;
+      min-width: 0;
+      max-height: 400px;
+      object-fit: contain;
+      background: var(--white);
+      border-radius: 10px;
+      border: 1px solid var(--border-light);
+    }
+
+    .story-images.single img {
+      max-height: 500px;
+      width: 100%;
+    }
+
+    /* ── STAR TABLE ── */
+    .star-table {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--white);
+    }
+
+    .star-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .star-row:last-child { border-bottom: none; }
+
+    .star-label {
+      padding: 22px 20px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      background: var(--bg);
+    }
+
+    .star-label-problem {
+      color: #cc0000 !important;
+    }
+
+    .star-label-mission {
+      background: linear-gradient(90deg, #2d6a4f, #52b788);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .star-content {
+      padding: 22px 24px;
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--text-sec);
+      border-left: 1px solid var(--border-light);
+      font-weight: 400;
+    }
+
+    .star-row.takeaway .star-label { color: var(--green); }
+    .star-row.takeaway .star-content { color: #1a5c35; }
+
+    @media (max-width: 600px) {
+      .topbar { padding: 0 16px; }
+      .page-wrap { padding: 32px 16px 60px; }
+      .story-title { font-size: 1.45rem; }
+      .star-row { grid-template-columns: 1fr; }
+      .star-label { padding: 14px 16px 6px; border-bottom: none; background: none; }
+      .star-content { padding: 0 16px 16px; border-left: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <a class="back-btn" onclick="history.back(); return false;" href="index.html">
+      ← Back
+    </a>
+    <span class="topbar-label">Case Study</span>
+    <div style="width:80px"></div>
+  </div>
+
+  <div class="page-wrap" id="pageWrap">
+    <!-- injected by JS -->
+  </div>
+
+  <script>
+    const stories = [
+      {
+        title: "Data-Driven Process Standardization",
+        images: ["데이터기반공정화1.png", "데이터기반공정화2.png"],
+        star: [
+          { label: "Problem",  text: "Materials were added based on operators' manual timing and experience, leading to frequent alloy content deviations from standard specifications." },
+          { label: "Mission",  text: "Move away from subjective methods and establish an objective, data-driven feeding standard to stabilize alloy content within strict tolerances." },
+          { label: "Action",   text: "Collected and analyzed two weeks of data using Python on feeding timing, quantity, and final content. Quantified how different timings affected alloy composition and derived the optimal feeding point to revise the Standard Operating Procedure (SOP)." },
+          { label: "Result",   text: "Zero occurrences of alloy content non-conformity since implementation. Established a system ensuring consistent quality regardless of operator experience level." },
+          { label: "Takeaway", text: "A process engineer's core competency lies in transforming on-site know-how into objective, data-driven systems that ensure process reliability at all times.", takeaway: true }
+        ]
+      },
+      {
+        title: "Team Morale & Collaborative Problem Solving",
+        images: ["긍정적인 태도로 팀 분위기를 바꾼 경험.jpg"],
+        star: [
+          { label: "Problem",  text: "During a project marked by repeated trial and error, the team became exhausted and a negative atmosphere began to set in." },
+          { label: "Mission",  text: "Boost the team's declining morale and motivate everyone to successfully complete the project." },
+          { label: "Action",   text: "Approached on-site operators with a proactive attitude to propose collaboration. During meetings, consciously shared small wins and expressed gratitude for teammates' contributions to lighten the atmosphere." },
+          { label: "Result",   text: "The team's mood shifted significantly, leading to active idea exchanges both in meetings and on the shop floor, which ultimately resolved the underlying issues." },
+          { label: "Takeaway", text: "Positive energy is a powerful tool that strengthens team cohesion and serves as a driving force to overcome even the most difficult challenges.", takeaway: true }
+        ]
+      },
+      {
+        title: "Process Responsibility — Off-Hours Incident Response",
+        images: ["Process responsibility - off hours incident response.png"],
+        star: [
+          { label: "Problem",  text: "An unexpected equipment alarm caused a production halt during a weekend night shift while managing the SCR process." },
+          { label: "Mission",  text: "Immediate root cause analysis and recovery were required to minimize production losses." },
+          { label: "Action",   text: "Despite being off-duty, monitored data remotely and communicated with on-site operators to identify a cooling system error and provide corrective instructions." },
+          { label: "Result",   text: "Reduced expected downtime from 4 hours to 1 hour through early response, preventing a high scrap rate." },
+          { label: "Takeaway", text: "An engineer's responsibility goes beyond office hours — it's about owning product quality and process continuity until the end.", takeaway: true }
+        ]
+      },
+      {
+        title: "Multi-Layer Quality Verification System",
+        images: ["공정지능화 및 다중 검증1.png", "공정지능화 및 다중 검증2.png"],
+        star: [
+          { label: "Problem",  text: "Equipment errors caused intermittent deviations in product dimensions during manufacturing, compromising quality consistency." },
+          { label: "Mission",  text: "Establish a multi-layer monitoring system to verify dimensions in real time and enable immediate response to deviations." },
+          { label: "Action",   text: "Collaborated with the equipment team to install a non-intrusive encoder. Designed cross-verification logic between equipment and encoder data, implemented an automated alarm for threshold breaches, and updated the SOP." },
+          { label: "Result",   text: "The dual-verification system eliminated the outflow of non-conforming products and maximized production stability by ensuring process data reliability." },
+          { label: "Takeaway", text: "Multi-layer verification and systemization (SOP) are the cornerstones of achieving smart factory excellence and zero-defect manufacturing.", takeaway: true }
+        ]
+      },
+      {
+        title: "Customer-Oriented Packaging Solution",
+        images: ["Customer-Oriented Packaging Solution.jpg"],
+        star: [
+          { label: "Problem",  text: "After product delivery, material entanglement issues occurred during the customer's process, causing unexpected production line shutdowns at the customer site." },
+          { label: "Mission",  text: "Analyze the root cause of the feeding mechanism and derive an unwinding solution optimized for the customer's operational environment." },
+          { label: "Action",   text: "Analyzed material behavior and identified instability in the internal loading structure. Designed and implemented an Internal Guide Pillar to maintain consistent tension and prevent entanglement during high-speed unwinding." },
+          { label: "Result",   text: "Achieved a 0% defect rate for material entanglement, significantly reducing customer downtime and earning high process reliability ratings." },
+          { label: "Takeaway", text: "A true quality engineer's role extends beyond internal production to optimizing the process interface where the product is actually used by the customer.", takeaway: true }
+        ]
+      },
+      {
+        title: "SAP ERP Real-Time Quality Integration",
+        images: ["SAP ERP Real-Time Quality integration.png"],
+        star: [
+          { label: "Problem",  text: "Tracking operational and quality data from off-site equipment in real time was difficult, resulting in a 24-hour lag in defect response time." },
+          { label: "Mission",  text: "Integrate field equipment data with the SAP ERP system to build a unified dashboard for real-time monitoring and instant alerts." },
+          { label: "Action",   text: "Led the integration project in collaboration with the IT team. Defined critical KPIs using domain expertise and provided technical guidance to align field equipment data protocols with ERP standards." },
+          { label: "Result",   text: "Reduced defect response time from 24 hours to real time, completing a proactive, data-driven quality management framework." },
+          { label: "Takeaway", text: "The synergy between domain expertise and IT technology is the key driver of manufacturing competitiveness — data visibility is the foundation of quality innovation.", takeaway: true }
+        ]
+      },
+      {
+        company: "UCF · Graduate Research",
+        title: "Next-Gen Substrate Reliability Analysis",
+        images: ["차세대 기판 신뢰성 분석.png", "차세대 기판 신뢰성 분석2.png"],
+        star: [
+          { label: "Problem",  text: "As power density in high-performance computing systems increases, Electromigration (EM) in PCB substrate interconnects has become a critical reliability concern." },
+          { label: "Mission",  text: "In collaboration with HPE, I needed to predict the lifespan of interconnects under various process variables and quantitatively analyze the impact of microstructural factors on reliability." },
+          { label: "Action",   text: "Designed and executed EM reliability test protocols. Using EBSD, I extracted data on grain orientation and twin boundary density to analyze the correlation between these variables and atomic diffusion." },
+          { label: "Result",   text: "Provided optimized microstructural control strategies to ensure interconnect reliability. My findings were adopted as key design guidelines for future high-specification server substrates." },
+          { label: "Takeaway", text: "I developed analytical problem-solving skills by linking advanced characterization data with theoretical mechanisms to derive practical engineering solutions.", takeaway: true }
+        ]
+      },
+      {
+        company: "UCF · Graduate Research",
+        title: "Measurement Standardization & Data Reliability",
+        images: ["측정 메커니즘 개선 및 데이터 신뢰성 확보2.png"],
+        star: [
+          { label: "Problem",  text: "While evaluating the thermo-mechanical properties of next-gen PCB substrates, significant data variability occurred even among identical samples, causing confusion in quality assessment." },
+          { label: "Mission",  text: "I needed to identify the root cause of data inconsistency and standardize the measurement process (SOP) to ensure repeatable results regardless of the operator." },
+          { label: "Action",   text: "Identified that micro-slippage of the specimen during measurement was the primary cause of data distortion. I optimized the clamping torque and loading conditions and established an SOP that includes a pre-test checklist to detect potential slip." },
+          { label: "Result",   text: "Reduced test variability by 80% by eliminating mechanical errors and secured highly repeatable process benchmarks for critical properties including Tg, CTE, and storage modulus." },
+          { label: "Takeaway", text: "Data reliability in precision analysis begins with standardizing the interface between the specimen and equipment — ensuring absolute control over every physical variable.", takeaway: true }
+        ]
+      },
+      {
+        company: "UCF · Graduate Research",
+        title: "Statistical Lifespan Prediction & Failure Analysis",
+        images: [],
+        star: [
+          { label: "Problem",  text: "During the reliability assessment of next-gen high-density interconnects, unexpected early failures occurred, requiring urgent root cause analysis and lifespan prediction." },
+          { label: "Mission",  text: "I needed to analyze microstructural defects using SEM/EBSD and quantitatively calculate the Mean Time To Failure (MTTF) through statistical modeling." },
+          { label: "Action",   text: "Performed root cause failure analysis via SEM/EBSD to identify atomic diffusion paths at grain boundaries. I applied Weibull and log-normal statistics to the failure data to extract the MTTF and build a reliability prediction model." },
+          { label: "Result",   text: "Provided reliability guidelines based on statistical evidence, preventing potential failure risks during the design phase through accurate lifespan prediction." },
+          { label: "Takeaway", text: "Combining advanced characterization with statistical methodologies is the most powerful tool for quantifying and predicting unseen quality in manufacturing.", takeaway: true }
+        ]
+      }
+    ];
+
+    const params = new URLSearchParams(window.location.search);
+    const id = parseInt(params.get('id'), 10);
+    const s = stories[id];
+
+    if (!s) {
+      document.getElementById('pageWrap').innerHTML = '<p style="color:#cc0000;margin-top:40px">Story not found.</p>';
+    } else {
+      document.title = s.title + ' · Junyoung Bang';
+
+      const company = s.company || 'LS Cable & System';
+
+      let imagesHTML = '';
+      if (s.images.length > 0) {
+        const cls = s.images.length === 1 ? 'story-images single' : 'story-images';
+        imagesHTML = `<div class="${cls}">${s.images.map(src => `<img src="${src}" alt="${s.title}">`).join('')}</div>`;
+      }
+
+      const rowsHTML = s.star.map(row => {
+        const extraClass = row.label === 'Problem' ? ' star-label-problem'
+                         : row.label === 'Mission' ? ' star-label-mission' : '';
+        return `<div class="star-row${row.takeaway ? ' takeaway' : ''}">
+          <div class="star-label${extraClass}">${row.label}</div>
+          <div class="star-content">${row.text}</div>
+        </div>`;
+      }).join('');
+
+      document.getElementById('pageWrap').innerHTML = `
+        <div class="company-tag">${company} · STAR Story</div>
+        <h1 class="story-title">${s.title}</h1>
+        ${imagesHTML}
+        <div class="star-table">${rowsHTML}</div>
+      `;
+    }
+  </script>
+
+</body>
+</html>
