@@ -842,6 +842,33 @@
     footer a { color: var(--blue); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
+    /* ── SECTION STORYTELLING ── */
+    .section-story {
+      font-size: 1rem;
+      color: var(--text-sec);
+      line-height: 1.85;
+      max-width: 720px;
+      margin-bottom: 48px;
+      font-weight: 400;
+    }
+
+    .case-studies-title {
+      font-size: 1.45rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-top: 64px;
+      margin-bottom: 10px;
+    }
+
+    .case-studies-story {
+      font-size: 0.95rem;
+      color: var(--text-sec);
+      line-height: 1.8;
+      max-width: 680px;
+      margin-bottom: 24px;
+      font-weight: 400;
+    }
+
     /* ── FADE IN ── */
     .fade-in {
       opacity: 0;
@@ -1006,7 +1033,7 @@
     <div class="nav-center" id="navCenter">
       <a href="#hero" class="nav-section-link" data-section="hero">About</a>
       <a href="#skills" class="nav-section-link" data-section="skills">Skills</a>
-      <a href="#experience" class="nav-section-link" data-section="experience">Experience</a>
+      <a href="#experience" class="nav-section-link" data-section="experience">Production</a>
       <a href="#research" class="nav-section-link" data-section="research">Research</a>
       <a href="#education" class="nav-section-link" data-section="education">Education</a>
     </div>
@@ -1024,7 +1051,7 @@
 
       <!-- HERO -->
       <section id="hero">
-        <img src="junyoung.jpg" alt="Junyoung Bang" class="hero-photo">
+        <img src="profile.jpg" alt="Junyoung Bang" class="hero-photo">
         <h1 class="hero-name">Junyoung Bang<span class="hero-name-sep">&nbsp;·&nbsp;</span><span class="hero-name-title">Process Engineer</span></h1>
         <p class="hero-sub">M.S. Materials Science &amp; Engineering &nbsp;·&nbsp; Process Engineer &nbsp;·&nbsp; UCF</p>
         <p class="hero-bio">
@@ -1044,7 +1071,6 @@
 
       <!-- SKILLS -->
       <div class="section-wrap" id="skills">
-        <p class="section-label">Expertise</p>
         <h2 class="section-title">Technical Skills</h2>
 
         <div class="skills-groups">
@@ -1113,8 +1139,12 @@
 
       <!-- EXPERIENCE + STORIES (merged) -->
       <div class="section-wrap" id="experience">
-        <p class="section-label">Career</p>
-        <h2 class="section-title">Industry Experience</h2>
+        <h2 class="section-title">Production Engineering</h2>
+        <p class="section-story">
+          Four years embedded in high-volume manufacturing at LS Cable &amp; System built more than technical skills —
+          it built the instinct to find problems before they find you. Every process instability, every quality gap,
+          every off-hours alarm was an opportunity to own the outcome and make the line better than it was the day before.
+        </p>
 
         <div class="timeline">
           <div class="timeline-item fade-in">
@@ -1140,9 +1170,12 @@
         </div>
 
         <!-- Engineering Case Studies -->
-        <div class="stories-header">
-          <p class="stories-sub-label">Engineering Case Studies</p>
-        </div>
+        <h3 class="case-studies-title">Solving Production Challenges on the Ground <span style="font-size: 1rem; font-weight: 400; color: var(--text-sec);">(Jan 2022 – Jul 2025)</span></h3>
+        <p class="case-studies-story">
+          These aren't textbook exercises — they're real problems from the production floor. Equipment failures at 2 a.m.,
+          invisible process drifts eroding yield, quality gaps the data hadn't caught yet. Each case study documents
+          the problem, the approach, and what was actually learned.
+        </p>
         <p class="stories-hint">Click any card to read the full case study</p>
 
         <div class="story-grid">
@@ -1227,8 +1260,13 @@
 
       <!-- RESEARCH -->
       <div class="section-wrap" id="research">
-        <p class="section-label">Academia</p>
-        <h2 class="section-title">Research Experience</h2>
+        <h2 class="section-title">From Industry to Academia</h2>
+        <p class="section-story">
+          After four years on the production floor, Junyoung came to UCF's M.S. program with a clear purpose —
+          to understand the materials science behind the processes he had been running. In collaboration with
+          Hewlett Packard Enterprise, his research connects advanced characterization with the reliability
+          challenges that actually matter in next-generation semiconductor packaging.
+        </p>
 
         <div class="timeline">
           <div class="timeline-item fade-in">
@@ -1256,9 +1294,11 @@
         </div>
 
         <!-- RESEARCH Engineering Case Studies -->
-        <div class="stories-header">
-          <p class="stories-sub-label">Engineering Case Studies</p>
-        </div>
+        <h3 class="case-studies-title">Applied Research &amp; Process Innovation <span style="font-size: 1rem; font-weight: 400; color: var(--text-sec);">(2025 – Present)</span></h3>
+        <p class="case-studies-story">
+          Research projects that bridge materials science fundamentals with real-world reliability engineering —
+          each one informed by years of manufacturing intuition and validated through rigorous experimental methods.
+        </p>
         <p class="stories-hint">Click any card to read the full case study</p>
 
         <div class="story-grid">
